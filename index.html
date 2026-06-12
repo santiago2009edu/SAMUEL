@@ -193,8 +193,8 @@ fStar.style.animationDelay = Math.random() * 5 + 's'; fallingContainer.appendChi
 }
 function scrollToSection(id) { const el = document.getElementById(id); if (el) el.scrollIntoView({behavior:'smooth'}); }
 const sections = document.querySelectorAll('section');
-new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.15 })
-.forEach(o => sections.forEach(s => o.observe(s)));
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.15 });
+sections.forEach(s => observer.observe(s));
 document.getElementById('dias-novios').innerText = Math.floor((new Date() - new Date('2026-02-05')) / 86400000);
 document.getElementById('dias-hablar').innerText = Math.floor((new Date() - new Date('2025-08-11')) / 86400000);
 </script>
