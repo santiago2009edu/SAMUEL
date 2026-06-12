@@ -252,6 +252,41 @@
             padding: 0 10px;
         }
 
+        .foto-pie-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--texto-secundario);
+            font-family: var(--font-romantic);
+            font-style: italic;
+            font-size: 1rem;
+            padding: 4px 0;
+            width: 75%;
+            outline: none;
+        }
+        .foto-pie-input:focus {
+            border-bottom-color: var(--azul-cielo);
+        }
+
+        .btn-eliminar-foto {
+            background: transparent;
+            border: 1px solid rgba(255,80,80,0.3);
+            color: #ff6666;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .btn-eliminar-foto:active {
+            background: rgba(255,80,80,0.2);
+            transform: scale(0.9);
+        }
+
         /* --- SECCIÓN 4: NUESTRA HISTORIA --- */
         .timeline {
             position: relative;
@@ -509,10 +544,9 @@
 
         <section id="mensaje">
             <div class="carta-amor">
-                <h2>Samuel 🩵</h2>
-                <p>Hace unos días me di cuenta de algo curioso.</p>
+                <h2>Samuel</h2>
+                <p>Sé que olvidé la fecha de nuestro mes.</p>
                 <p>Y sí, admito que me sentí un poco mal cuando caí en cuenta, porque eres una de las personas más importantes de mi vida.</p>
-                <p>Pero mientras pensaba en eso, recordé otra fecha.</p>
                 <p>Hoy cumplimos 10 meses desde que empezamos a hablar.</p>
                 <div class="decor-heart">🩵</div>
                 <p>Y entonces entendí algo.</p>
@@ -541,29 +575,12 @@
 
         <section id="fotos">
             <h2 class="seccion-titulo">Nuestras Fotos</h2>
-            <div class="galeria">
-                <div class="foto-item">
-                    <div class="foto-placeholder">
-                        <img src="foto1.jpg" alt="" onerror="this.style.display='none'">
-                        <span>[ Coloca tu Foto 1 aquí ]</span>
-                    </div>
-                    <p class="foto-pie">“Uno de mis recuerdos favoritos.”</p>
-                </div>
-                <div class="foto-item">
-                    <div class="foto-placeholder">
-                        <img src="foto2.jpg" alt="" onerror="this.style.display='none'">
-                        <span>[ Coloca tu Foto 2 aquí ]</span>
-                    </div>
-                    <p class="foto-pie">“Uno de esos momentos donde todo se sintió perfecto.”</p>
-                </div>
-                <div class="foto-item">
-                    <div class="foto-placeholder">
-                        <img src="foto3.jpg" alt="" onerror="this.style.display='none'">
-                        <span>[ Coloca tu Foto 3 aquí ]</span>
-                    </div>
-                    <p class="foto-pie">“Mi lugar favorito siempre será donde estés tú.”</p>
-                </div>
+            <p style="text-align:center;color:var(--texto-secundario);font-size:0.85rem;margin-bottom:20px;">
+                Tocá el botón ➕ para agregar una foto desde tu celular
+            </p>
+            <div class="galeria" id="galeria-contenedor">
             </div>
+            <button class="btn-comenzar" onclick="agregarFoto()" style="margin:25px auto 0;display:block;">➕ Agregar foto</button>
         </section>
 
 
@@ -587,49 +604,13 @@
 
 
         <section id="canciones">
-            <h2 class="seccion-titulo">Nuestras Canciones</h2>
-            <div class="reproductor-lista">
-                
-                <div class="tarjeta-musica" id="tarjeta-cancion1">
-                    <div class="musica-info-bloque">
-                        <div class="portada-album">
-                            <img src="portada1.jpg" alt="" onerror="this.style.display='none'">
-                            <span>[ Portada ]</span>
-                        </div>
-                        <div class="musica-detalles">
-                            <span class="cancion-titulo">No Other Heart</span>
-                            <span class="cancion-artista">Mac DeMarco</span>
-                            <span class="indicador-reproduccion">▶ Escuchando ahora...</span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.85rem; color: var(--azul-cielo); font-weight: 500; margin-bottom: 8px;">
-                        📝 Tú y yo somos testigos de lo mucho que ha crecido esto...
-                    </p>
-                    <p class="cancion-comentario">
-                        “No sé exactamente por qué esta canción me recuerda tanto a ti. Tal vez porque cada vez que la escucho pienso en tus ojos, en tu sonrisa y en lo bonito que se siente tenerte en mi vida. Simplemente tiene esa sensación de estar enamorado, y cada vez que suena, inevitablemente pienso en ti.”
-                    </p>
-                    <audio class="audio-player" id="audio1" controls src="cancion1.mp3"></audio>
-                </div>
-
-                <div class="tarjeta-musica" id="tarjeta-cancion2">
-                    <div class="musica-info-bloque">
-                        <div class="portada-album">
-                            <img src="portada2.jpg" alt="" onerror="this.style.display='none'">
-                            <span>[ Portada ]</span>
-                        </div>
-                        <div class="musica-detalles">
-                            <span class="cancion-titulo">Te Quiero</span>
-                            <span class="cancion-artista">Hombres G</span>
-                            <span class="indicador-reproduccion">▶ Escuchando ahora...</span>
-                        </div>
-                    </div>
-                    <p class="cancion-comentario">
-                        “Porque es simple, directa y sincera. Y porque si tuviera que resumir en dos palabras gran parte de lo que siento por ti, probablemente serían exactamente esas: Te quiero. Aunque la verdad es que me quedo corto, porque te amo muchísimo más.”
-                    </p>
-                    <audio class="audio-player" id="audio2" controls src="cancion2.mp3"></audio>
-                </div>
-
+            <h2 class="seccion-titulo">Nuestras Canciones 🎵</h2>
+            <p style="text-align:center;color:var(--texto-secundario);font-size:0.85rem;margin-bottom:20px;">
+                Subí tus canciones tocando el botón ➕ (formato .mp3)
+            </p>
+            <div class="reproductor-lista" id="lista-canciones">
             </div>
+            <button class="btn-comenzar" onclick=" agregarCancion()" style="margin:25px auto 0;display:block;">➕ Agregar canción</button>
         </section>
 
 
@@ -718,93 +699,186 @@
         }
         actualizarContadores();
 
-        // --- 6. INTELIGENCIA DE AUDIO (SCROLL + REPRODUCCIÓN AUTOMÁTICA EN BUCLE DE 30 SEG) ---
-        const audio1 = document.getElementById('audio1');
-        const audio2 = document.getElementById('audio2');
-        const tarjeta1 = document.getElementById('tarjeta-cancion1');
-        const tarjeta2 = document.getElementById('tarjeta-cancion2');
+        // --- 6. GALERÍA DE FOTOS CON SUBIDA Y PERSISTENCIA ---
+        const GALERIA_KEY = 'samuel_fotos';
 
-        let cancionActivaActual = null;
+        function cargarFotos() {
+            const container = document.getElementById('galeria-contenedor');
+            container.innerHTML = '';
+            const fotos = JSON.parse(localStorage.getItem(GALERIA_KEY) || '[]');
+            fotos.forEach((dataUrl, index) => {
+                const item = document.createElement('div');
+                item.className = 'foto-item';
+                item.innerHTML = `
+                    <div class="foto-placeholder">
+                        <img src="${dataUrl}" alt="">
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:0 8px;">
+                        <input type="text" class="foto-pie-input" value="Foto ${index + 1}" placeholder="Escribí un pie de foto..." maxlength="60"
+                            onchange="actualizarPie(${index}, this.value)">
+                        <button class="btn-eliminar-foto" onclick="eliminarFoto(${index})" title="Eliminar">✕</button>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function agregarFoto() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function (e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                    const fotos = JSON.parse(localStorage.getItem(GALERIA_KEY) || '[]');
+                    fotos.push(ev.target.result);
+                    localStorage.setItem(GALERIA_KEY, JSON.stringify(fotos));
+                    cargarFotos();
+                };
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        }
+
+        function eliminarFoto(index) {
+            const fotos = JSON.parse(localStorage.getItem(GALERIA_KEY) || '[]');
+            fotos.splice(index, 1);
+            localStorage.setItem(GALERIA_KEY, JSON.stringify(fotos));
+            cargarFotos();
+        }
+
+        function actualizarPie(index, texto) {
+            const pies = JSON.parse(localStorage.getItem(GALERIA_KEY + '_pies') || '[]');
+            pies[index] = texto;
+            localStorage.setItem(GALERIA_KEY + '_pies', JSON.stringify(pies));
+        }
+
+        cargarFotos();
+
+        // --- 7. CANCIONES CON SUBIDA Y PERSISTENCIA ---
+        const CANCIONES_KEY = 'samuel_canciones';
+
+        const CANCIONES_DEFAULT = [
+            { titulo: 'No Other Heart', artista: 'Mac DeMarco', comentario: 'No sé exactamente por qué esta canción me recuerda tanto a ti. Tal vez porque cada vez que la escucho pienso en tus ojos, en tu sonrisa y en lo bonito que se siente tenerte en mi vida.' },
+            { titulo: 'Te Quiero', artista: 'Hombres G', comentario: 'Porque es simple, directa y sincera. Y porque si tuviera que resumir en dos palabras gran parte de lo que siento por ti, probablemente serían exactamente esas: Te quiero.' },
+            { titulo: 'Canción 3', artista: 'Artista', comentario: 'Agregá tu canción favorita acá.' },
+            { titulo: 'Canción 4', artista: 'Artista', comentario: 'Agregá tu canción favorita acá.' },
+            { titulo: 'Canción 5', artista: 'Artista', comentario: 'Agregá tu canción favorita acá.' },
+            { titulo: 'Canción 6', artista: 'Artista', comentario: 'Agregá tu canción favorita acá.' },
+        ];
+
+        let cancionActivaIndex = null;
         let bucleIntervalo = null;
 
-        // Configuración de los timers para hacer el corte de 30 segundos
-        function iniciarMecanismoBucle() {
-            if (bucleIntervalo) clearInterval(bucleIntervalo);
-
-            bucleIntervalo = setInterval(() => {
-                // Si la canción 1 está sonando, forzamos el cambio a la canción 2
-                if (cancionActivaActual === 'cancion1') {
-                    reproducirEspecifica('cancion2');
-                } 
-                // Si la canción 2 está sonando, regresamos a la canción 1
-                else if (cancionActivaActual === 'cancion2') {
-                    reproducirEspecifica('cancion1');
-                }
-            }, 30000); // 30000 milisegundos = 30 segundos
+        function obtenerCanciones() {
+            const data = localStorage.getItem(CANCIONES_KEY);
+            if (data) return JSON.parse(data);
+            const defaults = CANCIONES_DEFAULT.map(c => ({ ...c, audioData: null, portadaData: null }));
+            localStorage.setItem(CANCIONES_KEY, JSON.stringify(defaults));
+            return defaults;
         }
 
-        function reproducirEspecifica(idCancion) {
-            if (idCancion === 'cancion1') {
-                audio2.pause();
-                tarjeta2.classList.remove('reproduciendo');
-                
-                audio1.play().catch(e => console.log("Interacción requerida para reproducción de audio automática"));
-                tarjeta1.classList.add('reproduciendo');
-                cancionActivaActual = 'cancion1';
-            } else if (idCancion === 'cancion2') {
-                audio1.pause();
-                tarjeta1.classList.remove('reproduciendo');
-                
-                audio2.play().catch(e => console.log("Interacción requerida para reproducción de audio automática"));
-                tarjeta2.classList.add('reproduciendo');
-                cancionActivaActual = 'cancion2';
-            }
-        }
+        function cargarCanciones() {
+            const container = document.getElementById('lista-canciones');
+            container.innerHTML = '';
+            const canciones = obtenerCanciones();
 
-        function detenerTodoElAudio() {
-            audio1.pause();
-            audio2.pause();
-            tarjeta1.classList.remove('reproduciendo');
-            tarjeta2.classList.remove('reproduciendo');
-            cancionActivaActual = null;
-            if (bucleIntervalo) {
-                clearInterval(bucleIntervalo);
-                bucleIntervalo = null;
-            }
-        }
+            canciones.forEach((cancion, index) => {
+                const tarjeta = document.createElement('div');
+                tarjeta.className = 'tarjeta-musica';
+                tarjeta.id = 'tarjeta-cancion' + index;
 
-        // Observadores de scroll para saber cuál tarjeta se está viendo en el celular
-        const opcionesMusica = { root: null, threshold: 0.6 }; // Se activa cuando se ve más de la mitad de la tarjeta
-
-        const observadorMusica = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.id === 'tarjeta-cancion1') {
-                        // Si ve la primera canción, la reproduce y arranca el loop de 30s
-                        reproducirEspecifica('cancion1');
-                        iniciarMecanismoBucle();
-                    } else if (entry.target.id === 'tarjeta-cancion2') {
-                        // Si baja y llega a ver la segunda canción, pasa inmediatamente a esa
-                        reproducirEspecifica('cancion2');
-                        iniciarMecanismoBucle();
-                    }
-                }
+                const portadaSrc = cancion.portadaData || '';
+                tarjeta.innerHTML = `
+                    <div class="musica-info-bloque">
+                        <div class="portada-album" id="portada-${index}" onclick="subirPortada(${index})" style="cursor:pointer;">
+                            ${portadaSrc ? `<img src="${portadaSrc}" alt="">` : `<span>🎵</span>`}
+                        </div>
+                        <div class="musica-detalles">
+                            <span class="cancion-titulo">${cancion.titulo}</span>
+                            <span class="cancion-artista">${cancion.artista}</span>
+                        </div>
+                    </div>
+                    <p class="cancion-comentario">“${cancion.comentario}”</p>
+                    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                        ${cancion.audioData ? `<audio class="audio-player" id="audio${index}" controls src="${cancion.audioData}"></audio>` : `<span style="color:var(--texto-secundario);font-size:0.8rem;">🔊 Sin canción</span>`}
+                        <button class="btn-eliminar-foto" onclick="subirAudio(${index})" title="Subir MP3" style="border-color:rgba(143,211,255,0.3);color:var(--azul-cielo);border-radius:8px;width:auto;padding:0 12px;">🎵 MP3</button>
+                        <button class="btn-eliminar-foto" onclick="editarCancion(${index})" title="Editar nombre/artista" style="border-color:rgba(143,211,255,0.3);color:var(--azul-cielo);border-radius:8px;width:auto;padding:0 12px;">✏️</button>
+                        <button class="btn-eliminar-foto" onclick="eliminarCancion(${index})" title="Eliminar" style="border-radius:8px;width:auto;padding:0 12px;">🗑️</button>
+                    </div>
+                `;
+                container.appendChild(tarjeta);
             });
-        }, opcionesMusica);
+        }
 
-        observadorMusica.observe(tarjeta1);
-        observadorMusica.observe(tarjeta2);
+        function subirPortada(index) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function (e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                    const canciones = obtenerCanciones();
+                    canciones[index].portadaData = ev.target.result;
+                    localStorage.setItem(CANCIONES_KEY, JSON.stringify(canciones));
+                    cargarCanciones();
+                };
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        }
 
-        // También apagamos la música si se sale de la sección de canciones para que no interrumpa las otras partes
-        const seccionCanciones = document.getElementById('canciones');
-        const observadorSeccionGlobal = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    detenerTodoElAudio();
-                }
-            });
-        }, { root: null, threshold: 0.05 });
-        observadorSeccionGlobal.observe(seccionCanciones);
+        function agregarCancion() {
+            const canciones = obtenerCanciones();
+            canciones.push({ titulo: 'Nueva canción', artista: 'Artista', comentario: 'Escribí algo bonito sobre esta canción...', audioData: null, portadaData: null });
+            localStorage.setItem(CANCIONES_KEY, JSON.stringify(canciones));
+            cargarCanciones();
+        }
+
+        function subirAudio(index) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'audio/*';
+            input.onchange = function (e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                    const canciones = obtenerCanciones();
+                    canciones[index].audioData = ev.target.result;
+                    localStorage.setItem(CANCIONES_KEY, JSON.stringify(canciones));
+                    cargarCanciones();
+                };
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        }
+
+        function editarCancion(index) {
+            const canciones = obtenerCanciones();
+            const c = canciones[index];
+            const nuevoTitulo = prompt('Nombre de la canción:', c.titulo);
+            if (!nuevoTitulo) return;
+            const nuevoArtista = prompt('Artista:', c.artista);
+            const nuevoComentario = prompt('Comentario:', c.comentario);
+            canciones[index] = { ...c, titulo: nuevoTitulo, artista: nuevoArtista || c.artista, comentario: nuevoComentario || c.comentario };
+            localStorage.setItem(CANCIONES_KEY, JSON.stringify(canciones));
+            cargarCanciones();
+        }
+
+        function eliminarCancion(index) {
+            if (!confirm('¿Eliminar esta canción?')) return;
+            const canciones = obtenerCanciones();
+            canciones.splice(index, 1);
+            localStorage.setItem(CANCIONES_KEY, JSON.stringify(canciones));
+            cargarCanciones();
+        }
+
+        cargarCanciones();
     </script>
 </body>
 </html>
